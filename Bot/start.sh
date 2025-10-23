@@ -10,5 +10,5 @@ fi
 echo "Instalando dependências npm..."
 npm install discord.js node-fetch dotenv
 
-echo "Pronto! Agora configure seu arquivo .env e rode o bot com:"
+echo "Está Pronto! Agora configure seu arquivo .env e rode o bot com:"
 echo "node index.js"
