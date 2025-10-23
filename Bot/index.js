@@ -10,7 +10,7 @@ console.log("Canal:", process.env.DISCORD_CHANNEL_ID);
 console.log("Canal configurado:", process.env.DISCORD_CHANNEL_ID);
 console.log("DISCORD_CHANNEL_ID:", JSON.stringify(process.env.DISCORD_CHANNEL_ID));
 
-require('dotenv').config();
+//require('dotenv').config();
 const token = process.env.DISCORD_TOKEN;
 const channelId = process.env.DISCORD_CHANNEL_ID;
 const { Client, GatewayIntentBits } = require('discord.js');
