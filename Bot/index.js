@@ -7,6 +7,8 @@
 //app.listen(PORT, () => console.log(`Servidor web rodando na porta ${PORT}`));
 
 require('dotenv').config();
+const token = process.env.DISCORD_TOKEN;
+const channelId = process.env.DISCORD_CHANNEL_ID;
 const { Client, GatewayIntentBits } = require('discord.js');
 const { buscarPromocoesSteam } = require('./lojas/steam');
 const fs = require('fs');
