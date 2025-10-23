@@ -152,23 +152,32 @@ async function enviarLotePendente(channel) {
 
 client.once('ready', async () => {
     console.log(`Bot conectado como ${client.user.tag}`);
-    const channel = await client.channels.fetch(DISCORD_CHANNEL_ID);
+
+    const channelId = process.env.DISCORD_CHANNEL_ID; // ← aqui está a correção
+    const intervaloHoras = process.env.UPDATE_INTERVAL || 1;
+
+    if (!channelId) {
+        console.error('Erro: DISCORD_CHANNEL_ID não está definido.');
+        return;
+    }
+
+    const channel = await client.channels.fetch(channelId);
     if (!channel) {
         console.log('Canal não encontrado. Verifique o ID do canal.');
         return;
     }
 
-    let enviouPendente = await enviarLotePendente(channel);
-    if (!enviouPendente) {
+    const enviouPendente = await enviarLotePendentes(channel);
+    if (enviouPendente) {
         await enviarPromocoes(channel);
     }
 
     setInterval(async () => {
-        let enviouPendente = await enviarLotePendente(channel);
-        if (!enviouPendente) {
+        const enviouPendente = await enviarLotePendentes(channel);
+        if (enviouPendente) {
             await enviarPromocoes(channel);
         }
-    }, INTERVALO_HORAS * 60 * 60 * 1000);
+    }, intervaloHoras * 60 * 60 * 1000); // converte horas para milissegundos
 });
 
 client.login(DISCORD_TOKEN);
