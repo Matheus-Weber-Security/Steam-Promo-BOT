@@ -172,7 +172,7 @@ client.once('ready', async () => {
         return;
     }
 
-    const enviouPendente = await enviarLotePendentes(channel);
+    const enviouPendente = await enviarLotePendente(channel);
     if (enviouPendente) {
         await enviarPromocoes(channel);
     }
