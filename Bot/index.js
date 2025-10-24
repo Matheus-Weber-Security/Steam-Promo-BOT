@@ -178,7 +178,7 @@ client.once('ready', async () => {
     }
 
     setInterval(async () => {
-        const enviouPendente = await enviarLotePendentes(channel);
+        const enviouPendente = await enviarLotePendente(channel);
         if (enviouPendente) {
             await enviarPromocoes(channel);
         }
